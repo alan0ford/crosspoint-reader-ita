@@ -26,21 +26,28 @@ This project is **not affiliated with Xteink**; it's built as a community projec
 ## Features & Usage
 
 - [x] EPUB parsing and rendering (EPUB 2 and EPUB 3)
-- [x] Image support within EPUB
+  - [x] Image support, kerning, ligatures, hyphenation
+  - [x] Footnote anchor navigation
+  - [x] Built-in EPUB optimizer
+- [x] TXT and XTC file reading
+- [x] BMP image viewer
 - [x] Saved reading position
-- [x] File explorer with file picker
-  - [x] Basic EPUB picker from root directory
-  - [x] Support nested folders
-  - [ ] EPUB picker with cover art
-- [x] Custom sleep screen
-  - [x] Cover sleep screen
-- [x] Wifi book upload
-- [x] Wifi OTA updates
+- [x] File explorer with cover art, nested folders, and hidden folders
+- [x] Custom sleep screens (including cover-based)
+- [x] WiFi book upload and OTA updates
+- [x] Calibre wireless transfers via the CrossPoint Reader device plugin
+- [x] SD-card firmware updates
+- [x] WebDAV support
+- [x] OPDS catalog browsing (multiple servers, search, pagination)
 - [x] KOReader Sync integration for cross-device reading progress
 - [x] Configurable font, layout, and display options
-  - [ ] User provided fonts
-  - [ ] Full UTF support
-- [x] Screen rotation
+  - [x] User-provided fonts (firmware-baked or loaded from SD card)
+  - [x] Auto page turn
+  - [x] Focus reading mode
+- [x] Multiple UI themes (Lyra, Roundedraff)
+- [x] Screen rotation and orientation-aware page turn buttons
+- [x] Remappable front buttons
+- [x] X3 gyroscope tilt page turning
 
 Multi-language support: Read EPUBs in various languages, including English, Spanish, French, German, Italian, Portuguese, Russian, Ukrainian, Polish, Swedish, Norwegian, [and more](./USER_GUIDE.md#supported-languages).
 
@@ -75,22 +82,25 @@ USB port or browser before assuming the device is locked. Only reach for the unl
 
 ## Installing
 
-### Web (latest firmware)
+### Web (recommended)
 
 1. Connect your Xteink device to your computer via USB-C and wake/unlock the device
-2. Go to https://xteink.dve.al/ and click "Flash CrossPoint firmware"
-
-To revert back to the official firmware, you can flash the latest official firmware from https://xteink.dve.al/, or swap
-back to the other partition using the "Swap boot partition" button here https://xteink.dve.al/debug.
+2. Go to https://crosspointreader.com/
+3. Select your device model (X3 or X4)
+4. Select the firmware you want to flash. The catalog includes:
+   - The latest stable CrossPoint release
+   - Release candidates and beta builds, when available
+   - Insider (nightly) builds from the latest `master`
+   - Stock Xteink firmware (English or Chinese) if you want to revert
+5. Click flash and follow the browser prompts to pick the serial device
 
 ### Web (specific firmware version)
 
+If you need a version that isn't in the catalog:
+
 1. Connect your Xteink device to your computer via USB-C
 2. Download the `firmware.bin` file from the release of your choice via the [releases page](https://github.com/crosspoint-reader/crosspoint-reader/releases)
-3. Go to https://xteink.dve.al/ and flash the firmware file using the "OTA fast flash controls" section
-
-To revert back to the official firmware, you can flash the latest official firmware from https://xteink.dve.al/, or swap
-back to the other partition using the "Swap boot partition" button here https://xteink.dve.al/debug.
+3. Go to https://crosspointreader.com/, select your device, choose "Custom .bin", upload your file, and flash
 
 ### Command line (specific firmware version)
 
@@ -113,6 +123,18 @@ Change `/dev/ttyACM0` to the device for your system.
 ### Manual
 
 See [Development](#development) below.
+
+## Custom SD-card fonts
+
+Convert your own TTF/OTF files into `.cpfont` files that load from the SD card. No firmware reflash is needed.
+
+1. Go to https://crosspointreader.com/fonts and open the "SD-card font builder" form
+2. Upload up to four styles (regular, bold, italic, bold-italic), set the family name, point sizes, and Unicode range
+3. Download the generated `.cpfont` files
+4. Copy them to your SD card under `/fonts/YourFont/` (or `/.fonts/YourFont/` to hide the folder)
+5. Select the font on the device from the font settings
+
+Conversion runs the firmware repo's `lib/EpdFont/scripts/fontconvert_sdcard.py` script unmodified, so output matches a local host build.
 
 ## Development
 
