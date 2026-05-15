@@ -26,28 +26,21 @@ This project is **not affiliated with Xteink**; it's built as a community projec
 ## Features & Usage
 
 - [x] EPUB parsing and rendering (EPUB 2 and EPUB 3)
-  - [x] Image support, kerning, ligatures, hyphenation
-  - [x] Footnote anchor navigation
-  - [x] Built-in EPUB optimizer
-- [x] TXT and XTC file reading
-- [x] BMP image viewer
+- [x] Image support within EPUB
 - [x] Saved reading position
-- [x] File explorer with cover art, nested folders, and hidden folders
-- [x] Custom sleep screens (including cover-based)
-- [x] WiFi book upload and OTA updates
-- [x] Calibre wireless transfers via the CrossPoint Reader device plugin
-- [x] SD-card firmware updates
-- [x] WebDAV support
-- [x] OPDS catalog browsing (multiple servers, search, pagination)
+- [x] File explorer with file picker
+  - [x] Basic EPUB picker from root directory
+  - [x] Support nested folders
+  - [ ] EPUB picker with cover art
+- [x] Custom sleep screen
+  - [x] Cover sleep screen
+- [x] Wifi book upload
+- [x] Wifi OTA updates
 - [x] KOReader Sync integration for cross-device reading progress
 - [x] Configurable font, layout, and display options
-  - [x] User-provided fonts (firmware-baked or loaded from SD card)
-  - [x] Auto page turn
-  - [x] Focus reading mode
-- [x] Multiple UI themes (Lyra, Roundedraff)
-- [x] Screen rotation and orientation-aware page turn buttons
-- [x] Remappable front buttons
-- [x] X3 gyroscope tilt page turning
+  - [ ] User provided fonts
+  - [ ] Full UTF support
+- [x] Screen rotation
 
 Multi-language support: Read EPUBs in various languages, including English, Spanish, French, German, Italian, Portuguese, Russian, Ukrainian, Polish, Swedish, Norwegian, [and more](./USER_GUIDE.md#supported-languages).
 
